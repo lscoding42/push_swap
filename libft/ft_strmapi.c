@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 16:09:43 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/23 23:55:38 by lhafsi           ###   ########.fr       */
+/*   Created: 2021/11/25 17:25:45 by lhafsi            #+#    #+#             */
+/*   Updated: 2021/12/10 21:23:59 by lhafsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	arg_check(int ac, char **av)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (ac < 2 || !av)
-		return (0);
-	if (ft_check_digit(ac, av) == 1)
-		return (0);
-	if (ft_check_minmax(ac, av) == 1)
-		return (0);
-	if (ft_check_doubles(ac, av) == 1)
-		return (0);
-	return (1);
-}
+	char	*str;
+	int		i;
 
-// MAIN ARG CHECKS
-
-int	main(int ac, char **av)
-{
-	if (arg_check(ac, av) == 0)
+	if (!s || !f)
+		return (0);
+	str = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!str)
+		return (0);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		printf("Error\n");
-		return (0);
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	else
-		printf("All good\n");
-	return (0);
+	str[i] = '\0';
+	return (str);
 }

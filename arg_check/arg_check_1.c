@@ -3,47 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   arg_check_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Louisa <Louisa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:09:43 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/19 16:30:33 by lhafsi           ###   ########.fr       */
+/*   Updated: 2022/05/29 20:28:40 by Louisa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int     ft_strcmp(char *s1,char *s2)
-{
-        int  i;
+// int     ft_strcmp(char *s1,char *s2)
+// {
+//         int  i;
 
-        i = 0;
-        while (s1[i] || s2[i])
-        {
-                if (s1[i] != s2[i])
-                        return (1);
-                i++;
-        }
-        return (0);
-}
+//         i = 0;
+//         while (s1[i] || s2[i])
+//         {
+//                 if (s1[i] != s2[i])
+//                         return (1);
+//                 i++;
+//         }
+//         return (0);
+// }
 
-int ft_check_doubles(int ac, char **av)
+// int ft_check_doubles(int ac, char **av)
+// {
+//     int i;
+//     int j;
+
+//     i = 1;
+    
+//     while (av[i])
+//     {
+//         j = i + 1;
+//         while (av[j] && j < ac)
+//         {
+//             if (ft_strcmp(av[i],av[j]) == 0)
+//                 return (1);
+//             j++;
+//         }
+//         i++;
+//     }
+//     return (0);
+// }
+
+int ft_check_0_doubles(int ac, char **av)
 {
     int i;
-    int j;
+    long num;
+    long ber;
 
     i = 1;
-    while (av[i])
+    while (av[i] && i <= ac - 2)
     {
-        j = i + 1;
-        while (av[j] && j < ac)
-        {
-            if (ft_strcmp(av[i],av[j]) == 0)
-                return (1);
-            j++;
-        }
-        i++;
+        num = ft_atol(av[i]);
+        ber = ft_atol(av[i + 1]);
+        printf("num = %ld\nber = %ld\n", num, ber);
+        if (num != ber)
+            i++;
+        else
+            return (1);
     }
     return (0);
+}
+
+int ft_check_signs(char *str)
+{
+    int i;
+
+    i = 1;
+    while (str)
+	{
+        if (str[i] == '-' || str[i] == '+')
+	    {
+            if (str[i + 1] == '-' || str[i + 1] == '+')
+			return(0);
+            i++;
+        }
+    }
+    return (1);
 }
 
 int ft_check_digit(int ac, char **av)
@@ -52,22 +90,21 @@ int ft_check_digit(int ac, char **av)
     int j;
 
     i = 1;
-    if (ac < 2 || !av)
+    if (ft_check_signs(av[i]) == 1)
         return (1);
     while (av[i] && i <= ac)
     {
         j = 0;
         while (av[i][j])
         {
-            printf("HERE j = %c\n", av[i][j]);
-            
-            if (av[i][j] == ' ')
-                j++; 
-            if (av[i][j] == '+' || av[i][j] == '-')
-                j++;    
-            if (!(av[i][j] >= '0' && av[i][j] <= '9'))
+            if (ft_is_space(av[i][j]) == 1)
+                j++;
+            else if (av[i][j] == '+' || av[i][j] == '-')
+                j++;
+            else if (!(av[i][j] >= '0' && av[i][j] <= '9'))
                 return (1);
-            j++;
+            else
+                j++;
         }
         i++;
     }
@@ -128,3 +165,34 @@ int main(int ac, char **av)
         printf("No doubles\n");
     return (0);
 }*/
+
+int	arg_check(int ac, char **av)
+{
+	if (ac < 2 || !av)
+		return (0);
+	if (ft_check_digit(ac, av) == 1)
+		return (0);
+	if (ft_check_minmax(ac, av) == 1)
+		return (0);
+	if (ft_check_0_doubles(ac, av) == 1)
+		return (0);
+	return (1);
+}
+
+// MAIN ARG CHECKS
+int	main(int ac, char **av)
+{
+	if (arg_check(ac, av) == 0)
+	{
+		write(1,"Error\n", 6);
+		return (0);
+	}
+	return (0);
+}
+
+// int	main(int ac, char **av)
+// {
+// 	if (ft_check_signs(ac, av) == 0)
+// 		write(1,"Error\n", 6);
+// 	return (0);
+// }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arg_check_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Louisa <Louisa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:09:43 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/19 12:50:58 by lhafsi           ###   ########.fr       */
+/*   Updated: 2022/05/28 15:29:14 by Louisa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,12 @@ long	ft_atol(char *str)
 	}
 	return (sign * result);
 }
-/*
-int main(int ac, char **av)
-{
-	printf("Result: %ld\n", ft_atol(av[1]));
-	return (0);
-} */
+
+// int main(int ac, char **av)
+// {
+// 	if(ac == 1)
+// 		return(0);
+// 	else 
+// 		printf("Result: %ld\n", ft_atol(av[1]));
+// 	return (0);
+// }

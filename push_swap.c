@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Louisa <Louisa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:09:43 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/23 23:55:38 by lhafsi           ###   ########.fr       */
+/*   Updated: 2022/05/28 12:46:28 by Louisa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ int	main(int ac, char **av)
 {
 	if (arg_check(ac, av) == 0)
 	{
-		printf("Error\n");
+		write(1,"Error\n", 6);
 		return (0);
 	}
-	else
-		printf("All good\n");
 	return (0);
 }

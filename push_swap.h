@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Louisa <Louisa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:09:49 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/25 20:40:53 by lhafsi           ###   ########.fr       */
+/*   Updated: 2022/05/28 12:28:32 by Louisa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#include "libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_order.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: Louisa <Louisa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:09:43 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/23 17:26:52 by lhafsi           ###   ########.fr       */
+/*   Updated: 2022/05/28 12:32:48 by Louisa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,17 @@ int ft_check_order(int ac, char **av)
             return (0);
     }
     return (1);
+}
+
+int main(int ac, char **av)
+{
+    if (ac == 1)
+        printf("NO ARGS\n");
+    else if (ac == 2)
+        printf("Only 1 = sorted\n");
+    else if (ft_check_order(ac, av) == 1)
+        printf("Already sorted\n");
+    else
+        printf("NOT sorted\n");
+    return(0);
 }

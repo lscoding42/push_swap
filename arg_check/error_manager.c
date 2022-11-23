@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   error_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/25 18:19:18 by lhafsi            #+#    #+#             */
-/*   Updated: 2021/12/21 16:44:32 by lhafsi           ###   ########.fr       */
+/*   Created: 2022/03/19 16:09:43 by lhafsi            #+#    #+#             */
+/*   Updated: 2022/11/18 04:31:57 by lhafsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -21,7 +21,21 @@ void	ft_putstr_fd(char *s, int fd)
 		return ;
 	while (s[i])
 	{
-		ft_putchar_fd(s[i], fd);
+		write (fd, &s[i], 1);
 		i++;
 	}
 }
+
+int	error_manager(int ac, char **av)
+{
+	if (ac < 2 || !av)
+		return (ft_putstr_fd("Error\n", 2), 0);
+	if (ft_check_minmax(ac, av))
+		return (ft_putstr_fd("Error\n", 2), 0);
+	if (ft_check_doubles(ac, av))
+		return (ft_putstr_fd("Error\n", 2), 0);
+	if (ft_check_digit(ac, av))
+		return (ft_putstr_fd("Error\n", 2), 0);
+	return (1);
+}
+

@@ -6,7 +6,7 @@
 /*   By: lhafsi <lhafsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:09:49 by lhafsi            #+#    #+#             */
-/*   Updated: 2022/05/27 23:11:57 by lhafsi           ###   ########.fr       */
+/*   Updated: 2022/06/06 06:38:57 by lhafsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,29 @@
 
 void	swap(t_stack **stack)
 {
-	int	temp;
+	int temp;
 
-	if (!(*stack) || !((*stack)->next))
+	if (!(*stack) || !((*stack)->next) || stack_size(*stack) < 2)
 		return ;
 	temp = (*stack)->val;
 	(*stack)->val = (*stack)->next->val;
 	(*stack)->next->val = temp;
 }
+
+// void	swap(t_stack **stack)
+// {
+// 	t_stack *current;
+// 	t_stack *temp;
+	
+// 	current = *stack;
+// 	temp = current->next;
+// 	temp->prev = NULL;
+// 	current->next = temp->next;
+// 	current->next->prev = current;
+// 	current->prev = temp;
+// 	temp->next = current;
+// 	*stack = temp;
+// }
 
 void	push(t_stack **stack1, t_stack **stack2)
 {
@@ -48,8 +63,8 @@ void	push(t_stack **stack1, t_stack **stack2)
 
 void	rotate(t_stack **stack)
 {
-	t_stack *current;
-	t_stack *temp;
+	t_stack	*current;
+	t_stack	*temp;
 
 	if (!(*stack) || !((*stack)->next))
 		return ;
@@ -61,7 +76,7 @@ void	rotate(t_stack **stack)
 		current = current->next;
 	current->next = temp;
 	temp->prev = current;
-	temp->next= NULL;
+	temp->next = NULL;
 }
 
 void	reverse(t_stack **stack)
